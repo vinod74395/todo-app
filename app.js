@@ -36,19 +36,30 @@ let btn=document.querySelector("button");
 let ul=document.querySelector("ul");
 btn.addEventListener("click",function(){
     let item=document.createElement("li");
-    item.innerText=inp.value;
+    inpVal=inp.value;
+    item.innerTex=inpVal;
+    if(inpVal===""){
+        alert("please enter the task!");
+        return;
+    }
     let dltbtn=document.createElement("button");
     dltbtn.classList.add("delete");
     dltbtn.innerText="delete";
     item.appendChild(dltbtn);
     ul.appendChild(item);
-    inp.value="";
+    inpVal="";
 
 });
 ul.addEventListener("click",function(event){
     if(event.target.nodeName=="BUTTON"){
         let listitem=event.target.parentElement;
-        listitem.remove();
-        console.log("deleted");
-    }
+        listitem.classList.add("fade-out");
+  console.log("deleted");
+    
+    setTimeout(() => {
+     listitem.remove();
+     console.log("your task is deleted");
+
+    }, 300)
+}
 });
